@@ -1,3 +1,3 @@
-module devnw.com/template
+module go.structs.dev/gen
 
-go 1.16
+go 1.18
