@@ -51,8 +51,30 @@ Example:
         slice1 := []string{"foo", "bar"}
         slice2 := []string{"floob", "bar"}
 
-        // Call the Dedup method without the `gen` prefix.
-        unique := Dedup(slice1, slice2)
+        // Call the Unique method without the `gen` prefix.
+        unique := Unique(slice1, slice2)
+
+        existingmap := map[string]int{
+            "foo": 1223,
+            "bar": 111,
+        }
+
+        // Cast to the generic Map
+        m := Map[string, int](existingmap)
+
+        keys = m.Keys()
+        values := m.Values()
+
+        // ...
+
+        existingSlice := []string{"foo", "bar", "baz"}
+
+        // Cast to the generic Slice
+        s := Slice[string](existingSlice)
+
+        // Convert slice to map
+
+        m := s.Map()
     }
 
 ```
@@ -75,7 +97,7 @@ slice to a Map or Slice directly without a type assertion to access the methods.
     an error indicating the issue
 
 **`func Diff[T comparable](a, b []T) []T`**
->Diff returns the symmetric difference between the two input slices
+>Diff returns the [symmetric difference] between the two input slices
 
 **`func Equal[T comparable](a, b []T) bool`**
 >Equal returns true if the two input slices are exactly equal
@@ -94,7 +116,7 @@ slice to a Map or Slice directly without a type assertion to access the methods.
 >Indices returns a slice of indices for all occurrences of value `v`
 
 **`func Intersect[T comparable](a, b []T) []T`**
->Intersect returns the intersection between the two input slices
+>Intersect returns the [intersection] between the two input slices
 
 **`func Match[T comparable](a, b []T) bool`**
 >Match returns true if the two input slices contain equivalent values NOTE:
@@ -112,4 +134,8 @@ go test -bench=. ./...
 ```
 
 To view benchmarks over time for the `main` branch of the repository they can
-be seen on our [Benchmark Report Card](https://structsdev.github.io/gen/dev/bench/).
+be seen on our [Benchmark Report Card].
+
+[symmetric difference]: https://en.wikipedia.org/wiki/Symmetric_difference
+[intersection]: https://en.wikipedia.org/wiki/Intersection_(set_theory)
+[Benchmark Report Card]: https://structsdev.github.io/gen/dev/bench/
