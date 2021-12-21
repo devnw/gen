@@ -6,7 +6,7 @@
 [![Build & Test Action Status](https://github.com/structsdev/gen/actions/workflows/build.yml/badge.svg)](https://github.com/structsdev/gen/actions)
 [![Go Report Card](https://goreportcard.com/badge/go.structs.dev/gen)](https://goreportcard.com/report/go.structs.dev/gen)
 [![codecov](https://codecov.io/gh/structsdev/gen/branch/main/graph/badge.svg)](https://codecov.io/gh/structsdev/gen)
-[![Go Reference](https://pkg.go.dev/badge/go.structs.dev/gen.svg)](https://pkg.go.dev/go.structs.dev/gen)
+[![Go Reference](https://pkg.go.dev/badge/go.structs.dev/gen.svg)](#documentation)
 [![License: Apache 2.0](https://img.shields.io/badge/license-Apache-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
