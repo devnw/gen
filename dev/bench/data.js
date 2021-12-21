@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1640124742350,
+  "lastUpdate": 1640124783062,
   "repoUrl": "https://github.com/structsdev/gen",
   "entries": {
     "Benchmark Results": [
@@ -1008,6 +1008,174 @@ window.BENCHMARK_DATA = {
             "value": 334.8,
             "unit": "ns/op",
             "extra": "3773780 times\n2 procs"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "benji@devnw.com",
+            "name": "Benji Vesterby",
+            "username": "benjivesterby"
+          },
+          "committer": {
+            "email": "benji@devnw.com",
+            "name": "Benji Vesterby",
+            "username": "benjivesterby"
+          },
+          "distinct": true,
+          "id": "cf472da15fd11d1618fd748b5f5cba6d5a8ce19a",
+          "message": "Documentation updates",
+          "timestamp": "2021-12-21T17:11:45-05:00",
+          "tree_id": "a7d20d25ac180429217071840e59adeb7034c8b8",
+          "url": "https://github.com/structsdev/gen/commit/cf472da15fd11d1618fd748b5f5cba6d5a8ce19a"
+        },
+        "date": 1640124781845,
+        "tool": "go",
+        "benches": [
+          {
+            "name": "Benchmark_Unique",
+            "value": 1081,
+            "unit": "ns/op",
+            "extra": "1091250 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Unique_NoUnique",
+            "value": 903.9,
+            "unit": "ns/op",
+            "extra": "1301865 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Has",
+            "value": 6.558,
+            "unit": "ns/op",
+            "extra": "180719984 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Has_DoesntHave",
+            "value": 7.304,
+            "unit": "ns/op",
+            "extra": "154933354 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Match",
+            "value": 864.8,
+            "unit": "ns/op",
+            "extra": "1368447 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Match_Doesnt",
+            "value": 905.2,
+            "unit": "ns/op",
+            "extra": "1330126 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Indices",
+            "value": 132.6,
+            "unit": "ns/op",
+            "extra": "8817411 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Indices_None",
+            "value": 11.98,
+            "unit": "ns/op",
+            "extra": "100000000 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Index",
+            "value": 4.456,
+            "unit": "ns/op",
+            "extra": "268308478 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Index_None",
+            "value": 6.924,
+            "unit": "ns/op",
+            "extra": "173957931 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_comp",
+            "value": 6.974,
+            "unit": "ns/op",
+            "extra": "174351189 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_comp_nomatch",
+            "value": 7.665,
+            "unit": "ns/op",
+            "extra": "154513873 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Equal",
+            "value": 7.526,
+            "unit": "ns/op",
+            "extra": "155289939 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Equal_not",
+            "value": 6.13,
+            "unit": "ns/op",
+            "extra": "196631502 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Compare",
+            "value": 8.545,
+            "unit": "ns/op",
+            "extra": "139950787 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Compare_err",
+            "value": 10.85,
+            "unit": "ns/op",
+            "extra": "100000000 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Intersect_full",
+            "value": 268.9,
+            "unit": "ns/op",
+            "extra": "4463294 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Intersect_partial",
+            "value": 211.2,
+            "unit": "ns/op",
+            "extra": "5476144 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Intersect_none",
+            "value": 132.6,
+            "unit": "ns/op",
+            "extra": "9154161 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Diff_all",
+            "value": 566.5,
+            "unit": "ns/op",
+            "extra": "2102337 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Diff_partial",
+            "value": 831,
+            "unit": "ns/op",
+            "extra": "1450114 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Diff_none",
+            "value": 724.5,
+            "unit": "ns/op",
+            "extra": "1654984 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Exclude",
+            "value": 294.3,
+            "unit": "ns/op",
+            "extra": "4087375 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Exclude_none",
+            "value": 366.2,
+            "unit": "ns/op",
+            "extra": "3379506 times\n2 procs"
           }
         ]
       }
