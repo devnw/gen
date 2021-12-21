@@ -33,49 +33,49 @@ Example:
 
 ```go
 
-    import . "go.structs.dev/gen"
+import . "go.structs.dev/gen"
 
-    func main() {
-        // ...
+func main() {
+    // ...
 
-        m := Map[string, string]{
-            "foo": "bar",
-            "bar": "baz",
-        }
-
-        // Get a slice of map keys
-        keys := m.Keys()
-
-        // ...
-
-        slice1 := []string{"foo", "bar"}
-        slice2 := []string{"floob", "bar"}
-
-        // Call the Unique method without the `gen` prefix.
-        unique := Unique(slice1, slice2)
-
-        existingmap := map[string]int{
-            "foo": 1223,
-            "bar": 111,
-        }
-
-        // Cast to the generic Map
-        m := Map[string, int](existingmap)
-
-        keys = m.Keys()
-        values := m.Values()
-
-        // ...
-
-        existingSlice := []string{"foo", "bar", "baz"}
-
-        // Cast to the generic Slice
-        s := Slice[string](existingSlice)
-
-        // Convert slice to map
-
-        m := s.Map()
+    m := Map[string, string]{
+        "foo": "bar",
+        "bar": "baz",
     }
+
+    // Get a slice of map keys
+    keys := m.Keys()
+
+    // ...
+
+    slice1 := []string{"foo", "bar"}
+    slice2 := []string{"floob", "bar"}
+
+    // Call the Unique method without the `gen` prefix.
+    unique := Unique(slice1, slice2)
+
+    existingmap := map[string]int{
+        "foo": 1223,
+        "bar": 111,
+    }
+
+    // Cast to the generic Map
+    m := Map[string, int](existingmap)
+
+    keys = m.Keys()
+    values := m.Values()
+
+    // ...
+
+    existingSlice := []string{"foo", "bar", "baz"}
+
+    // Cast to the generic Slice
+    s := Slice[string](existingSlice)
+
+    // Convert slice to map
+
+    m := s.Map()
+}
 
 ```
 
