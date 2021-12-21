@@ -56,3 +56,14 @@ Example:
     }
 
 ```
+
+## Benchmarks
+
+To execute the benchmarks, run the following command:
+
+```bash
+go test -bench=. ./...
+```
+
+To view benchmarks over time for the `main` branch of the repository they can
+be seen on our [Benchmark Report Card](https://structsdev.github.io/gen/dev/bench/).
