@@ -1,6 +1,12 @@
 package gen
 
-import "testing"
+import (
+	"bufio"
+	"bytes"
+	"io"
+	"strings"
+	"testing"
+)
 
 func Benchmark_Unique(b *testing.B) {
 
@@ -386,6 +392,21 @@ func Benchmark_Exclude_none(b *testing.B) {
 		out := Exclude(dataa, value)
 		if len(out) != 10 {
 			b.Errorf("expected %d, got %d", 6, len(out))
+		}
+	}
+}
+
+func Benchmark_As(b *testing.B) {
+	r1 := &bytes.Buffer{}
+	r2 := &bufio.Reader{}
+	r3 := &bufio.ReadWriter{}
+	r4 := strings.NewReader("test")
+	r5 := io.Reader(nil)
+
+	for n := 0; n < b.N; n++ {
+		out := As[io.Reader](r1, r2, r3, r4, r5)
+		if len(out) != 5 {
+			b.Errorf("expected %d, got %d", 5, len(out))
 		}
 	}
 }

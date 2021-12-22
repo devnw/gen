@@ -145,3 +145,18 @@ func Exclude[T comparable](a []T, b ...T) []T {
 
 	return out
 }
+
+// As allows you to cast N values passed in through a variadic
+// argument to a slice of N values. This is useful for casting
+// disparate struct types to slices of implemented interfaces
+//
+// Example: As[io.Reader](&bytes.Buffer{}, &bufio.Reader{})
+func As[T any](in ...T) []T {
+	out := make([]T, 0, len(in))
+
+	for _, v := range in {
+		out = append(out, v)
+	}
+
+	return out
+}

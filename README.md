@@ -125,6 +125,12 @@ slice to a Map or Slice directly without a type assertion to access the methods.
 **`func Unique[U ~[]T, T comparable](in U) []T`**
 >Unique returns a slice of unique values from the input slice
 
+**`func As[T any](in ...T) []T`**
+>As allows you to cast N values passed in through a variadic argument to a
+    slice of N values. This is useful for casting disparate struct types to
+    slices of implemented interfaces
+    **Example:** As[io.Reader](&bytes.Buffer{}, &bufio.Reader{})
+
 ## Benchmarks
 
 To execute the benchmarks, run the following command:
