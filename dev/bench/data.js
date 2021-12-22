@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1640124783062,
+  "lastUpdate": 1640131832754,
   "repoUrl": "https://github.com/structsdev/gen",
   "entries": {
     "Benchmark Results": [
@@ -1176,6 +1176,180 @@ window.BENCHMARK_DATA = {
             "value": 366.2,
             "unit": "ns/op",
             "extra": "3379506 times\n2 procs"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "benji@devnw.com",
+            "name": "Benji Vesterby",
+            "username": "benjivesterby"
+          },
+          "committer": {
+            "email": "benji@devnw.com",
+            "name": "Benji Vesterby",
+            "username": "benjivesterby"
+          },
+          "distinct": true,
+          "id": "ee08c021867b0248189f24071943e88bf7d92a2f",
+          "message": "Adding As method for casting disparate types that implement the same interface",
+          "timestamp": "2021-12-21T19:08:57-05:00",
+          "tree_id": "256f68fd7d40355246892eb158d3a2ffedb41535",
+          "url": "https://github.com/structsdev/gen/commit/ee08c021867b0248189f24071943e88bf7d92a2f"
+        },
+        "date": 1640131831722,
+        "tool": "go",
+        "benches": [
+          {
+            "name": "Benchmark_Unique",
+            "value": 1033,
+            "unit": "ns/op",
+            "extra": "1000000 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Unique_NoUnique",
+            "value": 797.8,
+            "unit": "ns/op",
+            "extra": "1342971 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Has",
+            "value": 7.107,
+            "unit": "ns/op",
+            "extra": "186081985 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Has_DoesntHave",
+            "value": 6.712,
+            "unit": "ns/op",
+            "extra": "185227152 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Match",
+            "value": 858.2,
+            "unit": "ns/op",
+            "extra": "1426656 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Match_Doesnt",
+            "value": 897.4,
+            "unit": "ns/op",
+            "extra": "1431937 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Indices",
+            "value": 130.6,
+            "unit": "ns/op",
+            "extra": "9659966 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Indices_None",
+            "value": 13.15,
+            "unit": "ns/op",
+            "extra": "78754998 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Index",
+            "value": 3.533,
+            "unit": "ns/op",
+            "extra": "338564676 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Index_None",
+            "value": 7.218,
+            "unit": "ns/op",
+            "extra": "165846574 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_comp",
+            "value": 10.33,
+            "unit": "ns/op",
+            "extra": "100000000 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_comp_nomatch",
+            "value": 10.91,
+            "unit": "ns/op",
+            "extra": "100000000 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Equal",
+            "value": 7.085,
+            "unit": "ns/op",
+            "extra": "170338245 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Equal_not",
+            "value": 7.035,
+            "unit": "ns/op",
+            "extra": "180674365 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Compare",
+            "value": 10.82,
+            "unit": "ns/op",
+            "extra": "100000000 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Compare_err",
+            "value": 8.864,
+            "unit": "ns/op",
+            "extra": "133765206 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Intersect_full",
+            "value": 258,
+            "unit": "ns/op",
+            "extra": "4235760 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Intersect_partial",
+            "value": 188.8,
+            "unit": "ns/op",
+            "extra": "6441552 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Intersect_none",
+            "value": 119.9,
+            "unit": "ns/op",
+            "extra": "9788416 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Diff_all",
+            "value": 601.2,
+            "unit": "ns/op",
+            "extra": "2076860 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Diff_partial",
+            "value": 842,
+            "unit": "ns/op",
+            "extra": "1398800 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Diff_none",
+            "value": 728.5,
+            "unit": "ns/op",
+            "extra": "1647612 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Exclude",
+            "value": 290.4,
+            "unit": "ns/op",
+            "extra": "4439005 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Exclude_none",
+            "value": 357.6,
+            "unit": "ns/op",
+            "extra": "3066010 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_As",
+            "value": 97.57,
+            "unit": "ns/op",
+            "extra": "12787668 times\n2 procs"
           }
         ]
       }
