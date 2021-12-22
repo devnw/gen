@@ -178,3 +178,25 @@ func WriteOnly[U chan T, T any](in ...U) []chan<- T {
 
 	return out
 }
+
+// channel defines a constraint that a value must be a channel
+// or a read-only channel of a specific type
+type channel[T any] interface {
+	chan T | chan<- T
+}
+
+// Close closes all channels in the input slice
+//
+// NOTE: If a channel is already closed any panic will
+// be ignored and the channel will be skipped
+func Close[U channel[T], T any](in ...U) {
+	for _, v := range in {
+		func() {
+			defer func() {
+				_ = recover()
+			}()
+
+			close(v)
+		}()
+	}
+}

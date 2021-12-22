@@ -430,3 +430,23 @@ func Benchmark_WriteOnly(b *testing.B) {
 		}
 	}
 }
+
+func Benchmark_Close(b *testing.B) {
+	for n := 0; n < b.N; n++ {
+		c1, c2, c3, c4, c5, c6 := make(chan int),
+			make(chan int),
+			make(chan int),
+			make(chan int),
+			make(chan int),
+			make(chan int)
+
+		go Close(c1, c2, c3, c4, c5, c6)
+
+		<-c1
+		<-c2
+		<-c3
+		<-c4
+		<-c5
+		<-c6
+	}
+}

@@ -31,3 +31,39 @@ func Test_WriteOnly(t *testing.T) {
 		}
 	}
 }
+
+func Test_Close(t *testing.T) {
+	c1, c2, c3, c4, c5, c6 := make(chan int),
+		make(chan int),
+		make(chan int),
+		make(chan int),
+		make(chan int),
+		make(chan int)
+
+	go Close(c1, c2, c3, c4, c5, c6)
+
+	<-c1
+	<-c2
+	<-c3
+	<-c4
+	<-c5
+	<-c6
+}
+
+func Test_Close_WriteOnly(t *testing.T) {
+	c1, c2, c3, c4, c5, c6 := make(chan int),
+		make(chan int),
+		make(chan int),
+		make(chan int),
+		make(chan int),
+		make(chan int)
+
+	go Close(WriteOnly(c1, c2, c3, c4, c5, c6)...)
+
+	<-c1
+	<-c2
+	<-c3
+	<-c4
+	<-c5
+	<-c6
+}
