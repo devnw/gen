@@ -410,3 +410,23 @@ func Benchmark_As(b *testing.B) {
 		}
 	}
 }
+
+func Benchmark_ReadOnly(b *testing.B) {
+	for n := 0; n < b.N; n++ {
+		out := ReadOnly(chandata...)
+
+		if len(out) != len(chandata) {
+			b.Errorf("expected 6, got %d", len(out))
+		}
+	}
+}
+
+func Benchmark_WriteOnly(b *testing.B) {
+	for n := 0; n < b.N; n++ {
+		out := WriteOnly(chandata...)
+
+		if len(out) != len(chandata) {
+			b.Errorf("expected 6, got %d", len(out))
+		}
+	}
+}

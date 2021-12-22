@@ -154,3 +154,27 @@ func Exclude[T comparable](a []T, b ...T) []T {
 func As[T any](in ...T) []T {
 	return in
 }
+
+// ReadOnly accepts a slice of channels and returns a slice
+// of channels that are read-only.
+func ReadOnly[U chan T, T any](in ...U) []<-chan T {
+	out := make([]<-chan T, 0, len(in))
+
+	for _, v := range in {
+		out = append(out, v)
+	}
+
+	return out
+}
+
+// WriteOnly accepts a slice of channels and returns a slice
+// of channels that are write-only.
+func WriteOnly[U chan T, T any](in ...U) []chan<- T {
+	out := make([]chan<- T, 0, len(in))
+
+	for _, v := range in {
+		out = append(out, v)
+	}
+
+	return out
+}
