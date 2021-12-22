@@ -152,11 +152,5 @@ func Exclude[T comparable](a []T, b ...T) []T {
 //
 // Example: As[io.Reader](&bytes.Buffer{}, &bufio.Reader{})
 func As[T any](in ...T) []T {
-	out := make([]T, 0, len(in))
-
-	for _, v := range in {
-		out = append(out, v)
-	}
-
-	return out
+	return in
 }
