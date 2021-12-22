@@ -129,7 +129,12 @@ slice to a Map or Slice directly without a type assertion to access the methods.
 >As allows you to cast N values passed in through a variadic argument to a
     slice of N values. This is useful for casting disparate struct types to
     slices of implemented interfaces
-    **Example:** As[io.Reader](&bytes.Buffer{}, &bufio.Reader{})
+>**Example:** As[io.Reader](&bytes.Buffer{}, &bufio.Reader{})
+
+**`func Close[U channel[T], T any](in ...U)`**
+>Close closes all channels in the input slice
+> NOTE: If a channel is already closed any panic will be ignored and the
+    channel will be skipped
 
 ## Benchmarks
 
