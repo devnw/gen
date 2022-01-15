@@ -9,7 +9,7 @@ import (
 
 type SliceData[T comparable] struct {
 	data     []T
-	expected Map[T, struct{}]
+	expected Map[T, any]
 }
 
 func SliceTest[T comparable](
@@ -42,140 +42,140 @@ func Test_Slice(t *testing.T) {
 	SliceTest(t, "string", map[string]SliceData[string]{
 		"single": {
 			data: []string{"a"},
-			expected: Map[string, struct{}]{
-				"a": struct{}{},
+			expected: Map[string, any]{
+				"a": nil,
 			},
 		},
 		"duplicate": {
 			data: []string{"a", "b", "a"},
-			expected: Map[string, struct{}]{
-				"a": struct{}{},
-				"b": struct{}{},
+			expected: Map[string, any]{
+				"a": nil,
+				"b": nil,
 			},
 		},
 		"empty": {
 			data:     []string{},
-			expected: Map[string, struct{}]{},
+			expected: Map[string, any]{},
 		},
 	})
 
 	SliceTest(t, "rune", map[string]SliceData[rune]{
 		"single": {
 			data: []rune{'a'},
-			expected: Map[rune, struct{}]{
-				'a': struct{}{},
+			expected: Map[rune, any]{
+				'a': nil,
 			},
 		},
 		"duplicate": {
 			data: []rune{'a', 'b', 'a'},
-			expected: Map[rune, struct{}]{
-				'a': struct{}{},
-				'b': struct{}{},
+			expected: Map[rune, any]{
+				'a': nil,
+				'b': nil,
 			},
 		},
 		"empty": {
 			data:     []rune{},
-			expected: Map[rune, struct{}]{},
+			expected: Map[rune, any]{},
 		},
 	})
 
 	SliceTest(t, "byte", map[string]SliceData[byte]{
 		"single": {
 			data: []byte{'a'},
-			expected: Map[byte, struct{}]{
-				'a': struct{}{},
+			expected: Map[byte, any]{
+				'a': nil,
 			},
 		},
 		"duplicate": {
 			data: []byte{'a', 'b', 'a'},
-			expected: Map[byte, struct{}]{
-				'a': struct{}{},
-				'b': struct{}{},
+			expected: Map[byte, any]{
+				'a': nil,
+				'b': nil,
 			},
 		},
 		"empty": {
 			data:     []byte{},
-			expected: Map[byte, struct{}]{},
+			expected: Map[byte, any]{},
 		},
 	})
 
 	SliceTest(t, "int", map[string]SliceData[int]{
 		"single": {
 			data: []int{1},
-			expected: Map[int, struct{}]{
-				1: struct{}{},
+			expected: Map[int, any]{
+				1: nil,
 			},
 		},
 		"duplicate": {
 			data: []int{1, 2, 1},
-			expected: Map[int, struct{}]{
-				1: struct{}{},
-				2: struct{}{},
+			expected: Map[int, any]{
+				1: nil,
+				2: nil,
 			},
 		},
 		"empty": {
 			data:     []int{},
-			expected: Map[int, struct{}]{},
+			expected: Map[int, any]{},
 		},
 	})
 
 	SliceTest(t, "float64", map[string]SliceData[float64]{
 		"single": {
 			data: []float64{1.0},
-			expected: Map[float64, struct{}]{
-				1.0: struct{}{},
+			expected: Map[float64, any]{
+				1.0: nil,
 			},
 		},
 		"duplicate": {
 			data: []float64{1.0, 2.0, 1.0},
-			expected: Map[float64, struct{}]{
-				1.0: struct{}{},
-				2.0: struct{}{},
+			expected: Map[float64, any]{
+				1.0: nil,
+				2.0: nil,
 			},
 		},
 		"empty": {
 			data:     []float64{},
-			expected: Map[float64, struct{}]{},
+			expected: Map[float64, any]{},
 		},
 	})
 
 	SliceTest(t, "complex128", map[string]SliceData[complex128]{
 		"single": {
 			data: []complex128{1.0 + 2.0i},
-			expected: Map[complex128, struct{}]{
-				1.0 + 2.0i: struct{}{},
+			expected: Map[complex128, any]{
+				1.0 + 2.0i: nil,
 			},
 		},
 		"duplicate": {
 			data: []complex128{1.0 + 2.0i, 3.0 + 4.0i, 1.0 + 2.0i},
-			expected: Map[complex128, struct{}]{
-				1.0 + 2.0i: struct{}{},
-				3.0 + 4.0i: struct{}{},
+			expected: Map[complex128, any]{
+				1.0 + 2.0i: nil,
+				3.0 + 4.0i: nil,
 			},
 		},
 		"empty": {
 			data:     []complex128{},
-			expected: Map[complex128, struct{}]{},
+			expected: Map[complex128, any]{},
 		},
 	})
 
 	SliceTest(t, "chan int", map[string]SliceData[chan int]{
 		"single": {
 			data: []chan int{c1},
-			expected: Map[chan int, struct{}]{
-				c1: struct{}{},
+			expected: Map[chan int, any]{
+				c1: nil,
 			},
 		},
 		"duplicate": {
 			data: []chan int{c1, c2, c1},
-			expected: Map[chan int, struct{}]{
-				c1: struct{}{},
-				c2: struct{}{},
+			expected: Map[chan int, any]{
+				c1: nil,
+				c2: nil,
 			},
 		},
 		"empty": {
 			data:     []chan int{},
-			expected: Map[chan int, struct{}]{},
+			expected: Map[chan int, any]{},
 		},
 	})
 
@@ -187,11 +187,11 @@ func Test_Slice(t *testing.T) {
 					B: "a",
 				},
 			},
-			expected: Map[testStruct, struct{}]{
+			expected: Map[testStruct, any]{
 				{
 					A: 1,
 					B: "a",
-				}: struct{}{},
+				}: nil,
 			},
 		},
 		"duplicate": {
@@ -209,65 +209,65 @@ func Test_Slice(t *testing.T) {
 					B: "a",
 				},
 			},
-			expected: Map[testStruct, struct{}]{
+			expected: Map[testStruct, any]{
 				{
 					A: 1,
 					B: "a",
-				}: struct{}{},
+				}: nil,
 				{
 					A: 2,
 					B: "b",
-				}: struct{}{},
+				}: nil,
 			},
 		},
 		"empty": {
 			data:     []testStruct{},
-			expected: Map[testStruct, struct{}]{},
+			expected: Map[testStruct, any]{},
 		},
 	})
 
 	SliceTest(t, "struct pointer", map[string]SliceData[*testStruct]{
 		"single": {
 			data: []*testStruct{tp1},
-			expected: Map[*testStruct, struct{}]{
-				tp1: struct{}{},
+			expected: Map[*testStruct, any]{
+				tp1: nil,
 			},
 		},
 		"duplicate": {
 			data: []*testStruct{tp1, tp2, tp1},
-			expected: Map[*testStruct, struct{}]{
-				tp1: struct{}{},
-				tp2: struct{}{},
+			expected: Map[*testStruct, any]{
+				tp1: nil,
+				tp2: nil,
 			},
 		},
 		"empty": {
 			data:     []*testStruct{},
-			expected: Map[*testStruct, struct{}]{},
+			expected: Map[*testStruct, any]{},
 		},
 	})
 
 	SliceTest(t, "interface", map[string]SliceData[io.Reader]{
 		"single": {
 			data: []io.Reader{r1},
-			expected: Map[io.Reader, struct{}]{
-				r1: struct{}{},
+			expected: Map[io.Reader, any]{
+				r1: nil,
 			},
 		},
 		"duplicate": {
 			data: []io.Reader{r1, r2, r1},
-			expected: Map[io.Reader, struct{}]{
-				r1: struct{}{},
-				r2: struct{}{},
+			expected: Map[io.Reader, any]{
+				r1: nil,
+				r2: nil,
 			},
 		},
 		"empty": {
 			data:     []io.Reader{},
-			expected: Map[io.Reader, struct{}]{},
+			expected: Map[io.Reader, any]{},
 		},
 	})
 }
 
-func ToStreamTest[U ~[]T, T comparable](
+func ChanTest[U ~[]T, T comparable](
 	t *testing.T,
 	name string,
 	data []U,
@@ -304,20 +304,20 @@ func ToStreamTest[U ~[]T, T comparable](
 		})
 }
 
-func Test_ToStream(t *testing.T) {
-	ToStreamTest(t, "int8", IntTests[int8](100, 1000))
-	ToStreamTest(t, "uint8", IntTests[uint8](100, 1000))
-	ToStreamTest(t, "uint8", IntTests[uint8](100, 1000))
-	ToStreamTest(t, "uint16", IntTests[uint16](100, 1000))
-	ToStreamTest(t, "int32", IntTests[int32](100, 1000))
-	ToStreamTest(t, "uint32", IntTests[uint32](100, 1000))
-	ToStreamTest(t, "int64", IntTests[int64](100, 1000))
-	ToStreamTest(t, "uint64", IntTests[uint64](100, 1000))
-	ToStreamTest(t, "float32", FloatTests[float32](100, 1000))
-	ToStreamTest(t, "float64", FloatTests[float64](100, 1000))
+func Test_Slice_Chan(t *testing.T) {
+	ChanTest(t, "int8", IntTests[int8](100, 1000))
+	ChanTest(t, "uint8", IntTests[uint8](100, 1000))
+	ChanTest(t, "uint8", IntTests[uint8](100, 1000))
+	ChanTest(t, "uint16", IntTests[uint16](100, 1000))
+	ChanTest(t, "int32", IntTests[int32](100, 1000))
+	ChanTest(t, "uint32", IntTests[uint32](100, 1000))
+	ChanTest(t, "int64", IntTests[int64](100, 1000))
+	ChanTest(t, "uint64", IntTests[uint64](100, 1000))
+	ChanTest(t, "float32", FloatTests[float32](100, 1000))
+	ChanTest(t, "float64", FloatTests[float64](100, 1000))
 }
 
-func Test_ToStream_CtxCancelled(t *testing.T) {
+func Test_Slice_Chan_CtxCancelled(t *testing.T) {
 	ctx, cancel := context.WithCancel(context.Background())
 	cancel()
 
@@ -330,7 +330,7 @@ func Test_ToStream_CtxCancelled(t *testing.T) {
 	}
 }
 
-func Test_ToStream_NilCtx(t *testing.T) {
+func Test_Slice_Chan_NilCtx(t *testing.T) {
 	out := Slice[int]([]int{1, 2, 3}).Chan(nil)
 
 	select {
