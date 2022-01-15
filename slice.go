@@ -1,5 +1,7 @@
 package gen
 
+import "context"
+
 // Slice wraps a slice of values with helper functions
 type Slice[T comparable] []T
 
@@ -18,6 +20,28 @@ func (s Slice[T]) Map() Map[T, struct{}] {
 	for _, v := range s {
 		out[v] = struct{}{}
 	}
+
+	return out
+}
+
+// Chan converts the slice to a channel of type T
+//
+// NOTE: This function does NOT use a buffered channel.
+func (s Slice[T]) Chan(ctx context.Context) <-chan T {
+	ctx, _ = _ctx(ctx)
+	out := make(chan T)
+
+	go func(out chan<- T) {
+		defer close(out)
+
+		for _, v := range s {
+			select {
+			case <-ctx.Done():
+				return
+			case out <- v:
+			}
+		}
+	}(out)
 
 	return out
 }

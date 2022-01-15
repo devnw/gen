@@ -1,8 +1,10 @@
 package gen
 
 import (
+	"context"
 	"io"
 	"testing"
+	"time"
 )
 
 type SliceData[T comparable] struct {
@@ -263,4 +265,77 @@ func Test_Slice(t *testing.T) {
 			expected: Map[io.Reader, struct{}]{},
 		},
 	})
+}
+
+func ToStreamTest[U ~[]T, T comparable](
+	t *testing.T,
+	name string,
+	data []U,
+) {
+	Tst(
+		t,
+		name,
+		data,
+		func(t *testing.T, data []T) {
+			ctx, cancel := context.WithCancel(context.Background())
+			defer cancel()
+
+			out := Slice[T](data).Chan(ctx)
+
+			for i := 0; ; i++ {
+				select {
+				case <-ctx.Done():
+					t.Error("context cancelled")
+					return
+				case out, ok := <-out:
+					if !ok {
+						if i != len(data) {
+							t.Fatalf("closed prematurely, expected %v, got %v", len(data)-1, i)
+						}
+
+						return
+					}
+
+					if out != data[i] {
+						t.Errorf("expected %v, got %v", data[i], out)
+					}
+				}
+			}
+		})
+}
+
+func Test_ToStream(t *testing.T) {
+	ToStreamTest(t, "int8", IntTests[int8](100, 1000))
+	ToStreamTest(t, "uint8", IntTests[uint8](100, 1000))
+	ToStreamTest(t, "uint8", IntTests[uint8](100, 1000))
+	ToStreamTest(t, "uint16", IntTests[uint16](100, 1000))
+	ToStreamTest(t, "int32", IntTests[int32](100, 1000))
+	ToStreamTest(t, "uint32", IntTests[uint32](100, 1000))
+	ToStreamTest(t, "int64", IntTests[int64](100, 1000))
+	ToStreamTest(t, "uint64", IntTests[uint64](100, 1000))
+	ToStreamTest(t, "float32", FloatTests[float32](100, 1000))
+	ToStreamTest(t, "float64", FloatTests[float64](100, 1000))
+}
+
+func Test_ToStream_CtxCancelled(t *testing.T) {
+	ctx, cancel := context.WithCancel(context.Background())
+	cancel()
+
+	out := Slice[int]([]int{1, 2, 3}).Chan(ctx)
+
+	select {
+	case <-time.After(time.Second):
+		t.Error("context cancelled")
+	case <-out:
+	}
+}
+
+func Test_ToStream_NilCtx(t *testing.T) {
+	out := Slice[int]([]int{1, 2, 3}).Chan(nil)
+
+	select {
+	case <-time.After(time.Second):
+		t.Error("context cancelled")
+	case <-out:
+	}
 }

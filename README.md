@@ -90,6 +90,30 @@ Map and Slice which provide helper functions for maps and slices. They are alias
 types for the standard Go map and slice types so you can cast from a map or
 slice to a Map or Slice directly without a type assertion to access the methods.
 
+### Types
+
+**`type Map[K comparable, V any] map[K]V`**
+>Map wraps the Go map type in a generic which provides helper functions for
+    accessing slices of keys or values without repeating the the implementation
+    for each type
+
+**`func (m Map[K, V]) Keys() []K`**
+>Keys returns a slice of keys from the map
+
+**`func (m Map[K, V]) Values() []V`**
+>Values returns a slice of values from the map
+
+**`type Slice[T comparable] []T`**
+>Slice wraps a slice of values with helper functions
+
+**`func (s Slice[T]) Chan(ctx context.Context) <-chan T`**
+>Chan converts the slice to a channel of type T
+>NOTE: This function does NOT use a buffered channel.
+
+**`func (s Slice[T]) Map() Map[T, struct{}]`**
+>Map returns a map of the given slice where the values of the slice are the
+    Map keys
+
 ### FUNCTIONS
 
 **`func Compare[T comparable](a, b []T) error`**
