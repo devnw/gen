@@ -39,14 +39,6 @@ func MapTest[T comparable](t *testing.T, testname string, testdata map[string]Ma
 
 func Test_nil(t *testing.T) {
 	var m Map[string, bool]
-
-	defer func() {
-		r := recover()
-		if r != nil {
-			t.Errorf("unexpected panic: %v", r)
-		}
-	}()
-
 	ks := m.Keys()
 	if len(ks) != 0 {
 		t.Errorf("Expected 0 keys, got %d", len(ks))
