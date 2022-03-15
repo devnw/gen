@@ -2,7 +2,6 @@ package gen
 
 import (
 	"context"
-	"io"
 	"testing"
 	"time"
 )
@@ -243,26 +242,6 @@ func Test_Slice(t *testing.T) {
 		"empty": {
 			data:     []*testStruct{},
 			expected: Map[*testStruct, any]{},
-		},
-	})
-
-	SliceTest(t, "interface", map[string]SliceData[io.Reader]{
-		"single": {
-			data: []io.Reader{r1},
-			expected: Map[io.Reader, any]{
-				r1: nil,
-			},
-		},
-		"duplicate": {
-			data: []io.Reader{r1, r2, r1},
-			expected: Map[io.Reader, any]{
-				r1: nil,
-				r2: nil,
-			},
-		},
-		"empty": {
-			data:     []io.Reader{},
-			expected: Map[io.Reader, any]{},
 		},
 	})
 }

@@ -1,7 +1,6 @@
 package gen
 
 import (
-	"io"
 	"testing"
 )
 
@@ -406,44 +405,6 @@ func Test_Match(t *testing.T) {
 		"empty": {
 			a:     []*testStruct{},
 			b:     []*testStruct{},
-			match: true,
-		},
-	})
-
-	MatchTest(t, "pointer_reader", map[string]DSMatch[io.Reader]{
-		"single": {
-			a:     []io.Reader{r1},
-			b:     []io.Reader{r1},
-			match: true,
-		},
-		"duplicate": {
-			a:     []io.Reader{r1, r2},
-			b:     []io.Reader{r1},
-			match: false,
-		},
-		"multiple": {
-			a:     []io.Reader{r1, r2, r3},
-			b:     []io.Reader{r1, r2},
-			match: false,
-		},
-		"multiple-no-duplicate": {
-			a:     []io.Reader{r1, r2, r3},
-			b:     []io.Reader{r1, r2, r3},
-			match: true,
-		},
-		"multiple-mismatch": {
-			a:     []io.Reader{r1, r2, r3},
-			b:     []io.Reader{r1, r3, r3},
-			match: false,
-		},
-		"duplicate in b": {
-			a:     []io.Reader{r1, r2, r3, r3},
-			b:     []io.Reader{r1, r2, r3, r3},
-			match: true,
-		},
-		"empty": {
-			a:     []io.Reader{},
-			b:     []io.Reader{},
 			match: true,
 		},
 	})

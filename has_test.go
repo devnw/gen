@@ -1,7 +1,6 @@
 package gen
 
 import (
-	"io"
 	"testing"
 )
 
@@ -257,45 +256,6 @@ func Test_Has(t *testing.T) {
 		"empty": {
 			in:    []*testStruct{},
 			value: tp1,
-			has:   false,
-		},
-	})
-
-	HasTest(t, "interface", map[string]HasData[io.Reader]{
-		"single": {
-			in:    []io.Reader{r1},
-			value: r1,
-			has:   true,
-		},
-		"duplicate": {
-			in: []io.Reader{
-				r1,
-				r2,
-				r1,
-			},
-			value: r1,
-			has:   true,
-		},
-		"multiple": {
-			in: []io.Reader{
-				r1,
-				r2,
-				r3,
-			},
-			value: r1,
-			has:   true,
-		},
-		"multiple-no-duplicate": {
-			in: []io.Reader{
-				r1,
-				r2,
-			},
-			value: r3,
-			has:   false,
-		},
-		"empty": {
-			in:    []io.Reader{},
-			value: r1,
 			has:   false,
 		},
 	})

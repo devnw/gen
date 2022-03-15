@@ -1,7 +1,6 @@
 package gen
 
 import (
-	"io"
 	"testing"
 )
 
@@ -398,51 +397,6 @@ func Test_Map(t *testing.T) {
 				c2,
 				c4,
 				c6,
-			},
-		},
-	})
-
-	MapTest(t, "interface", map[string]MapData[io.Reader]{
-		"one": {
-			in: Map[io.Reader, io.Reader]{
-				r1: r2,
-			},
-			keys: []io.Reader{
-				r1,
-			},
-			values: []io.Reader{
-				r2,
-			},
-		},
-		"two": {
-			in: Map[io.Reader, io.Reader]{
-				r1: r2,
-				r3: r4,
-			},
-			keys: []io.Reader{
-				r1,
-				r3,
-			},
-			values: []io.Reader{
-				r2,
-				r4,
-			},
-		},
-		"three": {
-			in: Map[io.Reader, io.Reader]{
-				r1: r2,
-				r3: r4,
-				r5: r6,
-			},
-			keys: []io.Reader{
-				r1,
-				r3,
-				r5,
-			},
-			values: []io.Reader{
-				r2,
-				r4,
-				r6,
 			},
 		},
 	})

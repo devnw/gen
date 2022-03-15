@@ -1,7 +1,6 @@
 package gen
 
 import (
-	"io"
 	"testing"
 )
 
@@ -233,29 +232,6 @@ func Test_Index(t *testing.T) {
 		"empty": {
 			in:    []*testStruct{},
 			value: tp1,
-			index: -1,
-		},
-	})
-
-	IndexTest(t, "interface", map[string]IndexData[io.Reader]{
-		"single": {
-			in:    []io.Reader{r1},
-			value: r1,
-			index: 0,
-		},
-		"second": {
-			in:    []io.Reader{r1, r2, r1},
-			value: r2,
-			index: 1,
-		},
-		"does not have": {
-			in:    []io.Reader{r1, r2, r1},
-			value: r3,
-			index: -1,
-		},
-		"empty": {
-			in:    []io.Reader{},
-			value: r1,
 			index: -1,
 		},
 	})

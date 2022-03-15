@@ -1,7 +1,6 @@
 package gen
 
 import (
-	"io"
 	"testing"
 )
 
@@ -260,29 +259,6 @@ func Test_Unique(t *testing.T) {
 		"empty": {
 			a: []*testStruct{},
 			b: []*testStruct{},
-		},
-	})
-
-	UniqueTest(t, "interface", map[string]DualSlice[io.Reader]{
-		"single": {
-			a: []io.Reader{r1},
-			b: []io.Reader{r1},
-		},
-		"duplicate": {
-			a: []io.Reader{r1, r1},
-			b: []io.Reader{r1},
-		},
-		"multiple": {
-			a: []io.Reader{r1, r2, r1},
-			b: []io.Reader{r1, r2},
-		},
-		"multiple-no-duplicate": {
-			a: []io.Reader{r1, r2, r3},
-			b: []io.Reader{r1, r2, r3},
-		},
-		"empty": {
-			a: []io.Reader{},
-			b: []io.Reader{},
 		},
 	})
 }

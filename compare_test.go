@@ -1,7 +1,6 @@
 package gen
 
 import (
-	"io"
 	"testing"
 )
 
@@ -378,39 +377,6 @@ func Test_Compare(t *testing.T) {
 		"empty": {
 			a:   []*testStruct{},
 			b:   []*testStruct{},
-			err: nil,
-		},
-	})
-
-	CompareTest(t, "interface", map[string]DSErr[io.Reader]{
-		"single": {
-			a:   []io.Reader{r1},
-			b:   []io.Reader{r1},
-			err: nil,
-		},
-		"duplicate": {
-			a:   []io.Reader{r1, r2},
-			b:   []io.Reader{r1, r2},
-			err: nil,
-		},
-		"multiple": {
-			a:   []io.Reader{r1, r2, r3},
-			b:   []io.Reader{r1, r2, r3},
-			err: nil,
-		},
-		"length-mismatch": {
-			a:   []io.Reader{r1, r2, r3},
-			b:   []io.Reader{r1, r2},
-			err: ErrLengthMismatch{3, 2},
-		},
-		"index-mismatch": {
-			a:   []io.Reader{r1, r2, r3},
-			b:   []io.Reader{r1, r2, r2},
-			err: ErrIndexMismatch[io.Reader]{2, r3, r2},
-		},
-		"empty": {
-			a:   []io.Reader{},
-			b:   []io.Reader{},
 			err: nil,
 		},
 	})

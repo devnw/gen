@@ -1,7 +1,6 @@
 package gen
 
 import (
-	"io"
 	"testing"
 )
 
@@ -369,44 +368,6 @@ func Test_Intersect(t *testing.T) {
 			a:        []*testStruct{},
 			b:        []*testStruct{},
 			expected: []*testStruct{},
-		},
-	})
-
-	IntersectTest(t, "interface", map[string]DSExpected[io.Reader]{
-		"single": {
-			a:        []io.Reader{r1},
-			b:        []io.Reader{r1},
-			expected: []io.Reader{r1},
-		},
-		"offset-index": {
-			a:        []io.Reader{r1, r2},
-			b:        []io.Reader{r2, r1},
-			expected: []io.Reader{r1, r2},
-		},
-		"duplicate": {
-			a:        []io.Reader{r1, r2, r1},
-			b:        []io.Reader{r1, r2, r1},
-			expected: []io.Reader{r1, r2, r1},
-		},
-		"multiple-no-duplicate": {
-			a:        []io.Reader{r1, r2, r3},
-			b:        []io.Reader{r4, r5, r6},
-			expected: []io.Reader{},
-		},
-		"length-mismatch": {
-			a:        []io.Reader{r1, r2, r3},
-			b:        []io.Reader{r1, r2},
-			expected: []io.Reader{r1, r2},
-		},
-		"index-mismatch": {
-			a:        []io.Reader{r1, r2, r3},
-			b:        []io.Reader{r1, r2, r4},
-			expected: []io.Reader{r1, r2},
-		},
-		"empty": {
-			a:        []io.Reader{},
-			b:        []io.Reader{},
-			expected: []io.Reader{},
 		},
 	})
 }

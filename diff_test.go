@@ -1,7 +1,6 @@
 package gen
 
 import (
-	"io"
 	"testing"
 )
 
@@ -339,41 +338,6 @@ func Test_Diff(t *testing.T) {
 			a:        []*testStruct{},
 			b:        []*testStruct{},
 			expected: []*testStruct{},
-		},
-	})
-
-	DiffTest(t, "interface", map[string]DSExpected[io.Reader]{
-		"single": {
-			a:        []io.Reader{r1},
-			b:        []io.Reader{r1},
-			expected: []io.Reader{},
-		},
-		"duplicate": {
-			a:        []io.Reader{r1, r1},
-			b:        []io.Reader{r1},
-			expected: []io.Reader{},
-		},
-		"multiple": {
-			a:        []io.Reader{r1, r2, r1},
-			b:        []io.Reader{r1, r1, r1},
-			expected: []io.Reader{r2},
-		},
-		"multiple-no-duplicate": {
-			a: []io.Reader{r1, r2, r3},
-			b: []io.Reader{r4, r5, r6},
-			expected: []io.Reader{
-				r1, r2, r3, r4, r5, r6,
-			},
-		},
-		"length-mismatch": {
-			a:        []io.Reader{r1, r2, r3},
-			b:        []io.Reader{r1, r2},
-			expected: []io.Reader{r3},
-		},
-		"empty": {
-			a:        []io.Reader{},
-			b:        []io.Reader{},
-			expected: []io.Reader{},
 		},
 	})
 }

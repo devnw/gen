@@ -2,7 +2,6 @@ package gen
 
 import (
 	"bytes"
-	"constraints"
 	"fmt"
 	"math/rand"
 	"testing"
@@ -62,16 +61,24 @@ func Tst[U ~[]T, T any](
 	}
 }
 
-func Int[T constraints.Integer]() T {
+type integer interface {
+	~int | ~int8 | ~int16 | ~int32 | ~int64 | ~uint | ~uint8 | ~uint16 | ~uint32 | ~uint64
+}
+
+type float interface {
+	~float32 | ~float64
+}
+
+func Int[T integer]() T {
 	value := rand.Int()
 	return T(value)
 }
 
-func Float[T constraints.Float]() T {
+func Float[T float]() T {
 	return T(rand.Float64())
 }
 
-func Ints[T constraints.Integer](size int) []T {
+func Ints[T integer](size int) []T {
 	out := make([]T, size)
 
 	for i := range out {
@@ -81,7 +88,7 @@ func Ints[T constraints.Integer](size int) []T {
 	return out
 }
 
-func Floats[T constraints.Float](size int) []T {
+func Floats[T float](size int) []T {
 	out := make([]T, size)
 
 	for i := range out {
@@ -91,7 +98,7 @@ func Floats[T constraints.Float](size int) []T {
 	return out
 }
 
-func IntTests[T constraints.Integer](tests, cap int) [][]T {
+func IntTests[T integer](tests, cap int) [][]T {
 	out := make([][]T, tests)
 
 	for i := range out {
@@ -101,7 +108,7 @@ func IntTests[T constraints.Integer](tests, cap int) [][]T {
 	return out
 }
 
-func FloatTests[T constraints.Float](tests, cap int) [][]T {
+func FloatTests[T float](tests, cap int) [][]T {
 	out := make([][]T, tests)
 
 	for i := range out {
