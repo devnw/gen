@@ -1,8 +1,5 @@
 # `gen` The Generic General Use Go Functions Library
 
-> ***NOTE:*** This project is currently under active development
-> and REQUIRES Go 1.18beta1 or higher.
-
 [![Build & Test Action Status](https://github.com/structsdev/gen/actions/workflows/build.yml/badge.svg)](https://github.com/structsdev/gen/actions)
 [![Go Report Card](https://goreportcard.com/badge/go.structs.dev/gen)](https://goreportcard.com/report/go.structs.dev/gen)
 [![codecov](https://codecov.io/gh/structsdev/gen/branch/main/graph/badge.svg)](https://codecov.io/gh/structsdev/gen)
