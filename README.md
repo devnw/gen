@@ -3,7 +3,7 @@
 [![Build & Test Action Status](https://github.com/structsdev/gen/actions/workflows/build.yml/badge.svg)](https://github.com/structsdev/gen/actions)
 [![Go Report Card](https://goreportcard.com/badge/go.structs.dev/gen)](https://goreportcard.com/report/go.structs.dev/gen)
 [![codecov](https://codecov.io/gh/structsdev/gen/branch/main/graph/badge.svg)](https://codecov.io/gh/structsdev/gen)
-[![Go Reference](https://pkg.go.dev/badge/go.structs.dev/gen.svg)](#documentation)
+[![Go Reference](https://pkg.go.dev/badge/go.structs.dev/gen.svg)](https://pkg.go.dev/go.structs.dev/gen)
 [![License: Apache 2.0](https://img.shields.io/badge/license-Apache-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
@@ -75,87 +75,6 @@ func main() {
 }
 
 ```
-
-## Documentation
-
-Until pkg.go.dev support the 1.18 release, here is the documentation for the
-current version of the library.
-
-The types defined in this library are:
-
-Map and Slice which provide helper functions for maps and slices. They are alias
-types for the standard Go map and slice types so you can cast from a map or
-slice to a Map or Slice directly without a type assertion to access the methods.
-
-### Types
-
-**`type Map[K comparable, V any] map[K]V`**
->Map wraps the Go map type in a generic which provides helper functions for
-    accessing slices of keys or values without repeating the the implementation
-    for each type
-
-**`func (m Map[K, V]) Keys() []K`**
->Keys returns a slice of keys from the map
-
-**`func (m Map[K, V]) Values() []V`**
->Values returns a slice of values from the map
-
-**`type Slice[T comparable] []T`**
->Slice wraps a slice of values with helper functions
-
-**`func (s Slice[T]) Chan(ctx context.Context) <-chan T`**
->Chan converts the slice to a channel of type T
->NOTE: This function does NOT use a buffered channel.
-
-**`func (s Slice[T]) Map() Map[T, struct{}]`**
->Map returns a map of the given slice where the values of the slice are the
-    Map keys
-
-### FUNCTIONS
-
-**`func Compare[T comparable](a, b []T) error`**
-> Compare returns nil if the two input slices are equal otherwise it returns
-    an error indicating the issue
-
-**`func Diff[T comparable](a, b []T) []T`**
->Diff returns the [symmetric difference] between the two input slices
-
-**`func Equal[T comparable](a, b []T) bool`**
->Equal returns true if the two input slices are exactly equal
-
-**`func Exclude[T comparable](a []T, b ...T) []T`**
->Exclude returns a slice of values from the input slice minus the values
-    supplied in the second argument
-
-**`func Has[T comparable](in []T, v T) bool`**
->Has determines if the input slice contains the input value
-
-**`func Index[T comparable](in []T, v T) int`**
->Index returns the index of the first occurrence of the input value
-
-**`func Indices[T comparable](in []T, v T) []int`**
->Indices returns a slice of indices for all occurrences of value `v`
-
-**`func Intersect[T comparable](a, b []T) []T`**
->Intersect returns the [intersection] between the two input slices
-
-**`func Match[T comparable](a, b []T) bool`**
->Match returns true if the two input slices contain equivalent values NOTE:
-    Match ignores ordering
-
-**`func Unique[U ~[]T, T comparable](in U) []T`**
->Unique returns a slice of unique values from the input slice
-
-**`func As[T any](in ...T) []T`**
->As allows you to cast N values passed in through a variadic argument to a
-    slice of N values. This is useful for casting disparate struct types to
-    slices of implemented interfaces
->**Example:** As[io.Reader](&bytes.Buffer{}, &bufio.Reader{})
-
-**`func Close[U channel[T], T any](in ...U)`**
->Close closes all channels in the input slice
-> NOTE: If a channel is already closed any panic will be ignored and the
-    channel will be skipped
 
 ## Benchmarks
 
