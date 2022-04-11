@@ -36,6 +36,36 @@ func MapTest[T comparable](t *testing.T, testname string, testdata map[string]Ma
 		})
 }
 
+func Test_FMap_Flip_strings(t *testing.T) {
+	m := FMap[string, string]{"a": "b", "c": "d"}
+	m2 := m.Flip()
+
+	if len(m) != len(m2) {
+		t.Errorf("Expected %d keys, got %d", len(m), len(m2))
+	}
+
+	for k, v := range m {
+		if m2[v] != k {
+			t.Errorf("Expected %s, got %s", k, m2[v])
+		}
+	}
+}
+
+func Test_FMap_Flip_diff_types(t *testing.T) {
+	m := FMap[string, int]{"a": 1500, "c": 25000}
+	m2 := m.Flip()
+
+	if len(m) != len(m2) {
+		t.Errorf("Expected %d keys, got %d", len(m), len(m2))
+	}
+
+	for k, v := range m {
+		if m2[v] != k {
+			t.Errorf("Expected %s, got %s", k, m2[v])
+		}
+	}
+}
+
 func Test_nil(t *testing.T) {
 	var m Map[string, bool]
 	ks := m.Keys()

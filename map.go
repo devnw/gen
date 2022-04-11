@@ -34,3 +34,18 @@ func (m Map[K, V]) Values() []V {
 	}
 	return out
 }
+
+// FMap is a flippale map where the key and value
+// can be swapped
+type FMap[K, V comparable] Map[K, V]
+
+// Flip returns a new FMap with the key and value
+// swapped
+func (m FMap[K, V]) Flip() FMap[V, K] {
+	out := make(FMap[V, K])
+	for k, v := range m {
+		out[v] = k
+	}
+
+	return out
+}
