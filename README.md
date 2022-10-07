@@ -22,20 +22,16 @@ go get -u go.structs.dev/gen@latest
 
 ## Import
 
-It is recommended that you use a `.` import for this library so that the
-library functions are available in the current namespace without the `gen`
-prefix.
-
 Example:
 
 ```go
 
-import . "go.structs.dev/gen"
+import "go.structs.dev/gen"
 
 func main() {
     // ...
 
-    m := Map[string, string]{
+    m := gen.Map[string, string]{
         "foo": "bar",
         "bar": "baz",
     }
@@ -49,7 +45,7 @@ func main() {
     slice2 := []string{"floob", "bar"}
 
     // Call the Unique method without the `gen` prefix.
-    unique := Unique(slice1, slice2)
+    unique := gen.Unique(slice1, slice2)
 
     existingmap := map[string]int{
         "foo": 1223,
@@ -57,7 +53,7 @@ func main() {
     }
 
     // Cast to the generic Map
-    m := Map[string, int](existingmap)
+    m := gen.Map[string, int](existingmap)
 
     keys = m.Keys()
     values := m.Values()
@@ -67,7 +63,7 @@ func main() {
     existingSlice := []string{"foo", "bar", "baz"}
 
     // Cast to the generic Slice
-    s := Slice[string](existingSlice)
+    s := gen.Slice[string](existingSlice)
 
     // Convert slice to map
 
@@ -87,6 +83,4 @@ go test -bench=. ./...
 To view benchmarks over time for the `main` branch of the repository they can
 be seen on our [Benchmark Report Card].
 
-[symmetric difference]: https://en.wikipedia.org/wiki/Symmetric_difference
-[intersection]: https://en.wikipedia.org/wiki/Intersection_(set_theory)
 [Benchmark Report Card]: https://structsdev.github.io/gen/dev/bench/
