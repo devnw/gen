@@ -1,3 +1,3 @@
-module go.structs.dev/gen
+module go.devnw.com/gen
 
 go 1.19

@@ -1,9 +1,9 @@
 # `gen` The Generic General Use Go Functions Library
 
-[![Build & Test Action Status](https://github.com/structsdev/gen/actions/workflows/build.yml/badge.svg)](https://github.com/structsdev/gen/actions)
-[![Go Report Card](https://goreportcard.com/badge/go.structs.dev/gen)](https://goreportcard.com/report/go.structs.dev/gen)
-[![codecov](https://codecov.io/gh/structsdev/gen/branch/main/graph/badge.svg)](https://codecov.io/gh/structsdev/gen)
-[![Go Reference](https://pkg.go.dev/badge/go.structs.dev/gen.svg)](https://pkg.go.dev/go.structs.dev/gen)
+[![Build & Test Action Status](https://github.com/devnw/gen/actions/workflows/build.yml/badge.svg)](https://github.com/devnw/gen/actions)
+[![Go Report Card](https://goreportcard.com/badge/go.devnw.com/gen)](https://goreportcard.com/report/go.devnw.com/gen)
+[![codecov](https://codecov.io/gh/devnw/gen/branch/main/graph/badge.svg)](https://codecov.io/gh/devnw/gen)
+[![Go Reference](https://pkg.go.dev/badge/go.devnw.com/gen.svg)](https://pkg.go.dev/go.devnw.com/gen)
 [![License: Apache 2.0](https://img.shields.io/badge/license-Apache-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
@@ -17,7 +17,7 @@ designed to be easy to use.
 ## Installation
 
 ```bash
-go get -u go.structs.dev/gen@latest
+go get -u go.devnw.com/gen@latest
 ```
 
 ## Import
@@ -26,7 +26,7 @@ Example:
 
 ```go
 
-import "go.structs.dev/gen"
+import "go.devnw.com/gen"
 
 func main() {
     // ...
@@ -83,4 +83,4 @@ go test -bench=. ./...
 To view benchmarks over time for the `main` branch of the repository they can
 be seen on our [Benchmark Report Card].
 
-[Benchmark Report Card]: https://structsdev.github.io/gen/dev/bench/
+[Benchmark Report Card]: https://devnw.github.io/gen/dev/bench/
