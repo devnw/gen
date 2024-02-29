@@ -10,5 +10,5 @@ env:
 jobs:
   release:
     name: Tagged Release
-    uses: spyderorg/workflows/.github/workflows/make-release.yml@main
+    uses: devnw/workflows/.github/workflows/make-release.yml@main
     secrets: inherit # pragma: allowlist secret
