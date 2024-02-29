@@ -2,7 +2,6 @@
 
 [![Build & Test Action Status](https://github.com/devnw/gen/actions/workflows/build.yml/badge.svg)](https://github.com/devnw/gen/actions)
 [![Go Report Card](https://goreportcard.com/badge/go.devnw.com/gen)](https://goreportcard.com/report/go.devnw.com/gen)
-[![codecov](https://codecov.io/gh/devnw/gen/branch/main/graph/badge.svg)](https://codecov.io/gh/devnw/gen)
 [![Go Reference](https://pkg.go.dev/badge/go.devnw.com/gen.svg)](https://pkg.go.dev/go.devnw.com/gen)
 [![License: Apache 2.0](https://img.shields.io/badge/license-Apache-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
