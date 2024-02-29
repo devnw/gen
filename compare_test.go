@@ -1,3 +1,17 @@
+// Copyright 2022 Developer Network
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package gen
 
 import (
@@ -56,12 +70,12 @@ func Test_Compare(t *testing.T) {
 		"length-mismatch": {
 			a:   []string{"a", "b", "c"},
 			b:   []string{"a", "b"},
-			err: ErrLengthMismatch{3, 2},
+			err: LengthMismatchError{3, 2},
 		},
 		"index-mismatch": {
 			a:   []string{"a", "b", "c"},
 			b:   []string{"a", "b", "d"},
-			err: ErrIndexMismatch[string]{2, "c", "d"},
+			err: IndexMismatchError[string]{2, "c", "d"},
 		},
 		"empty": {
 			a:   []string{},
@@ -94,12 +108,12 @@ func Test_Compare(t *testing.T) {
 		"length-mismatch": {
 			a:   []rune{'a', 'b', 'c'},
 			b:   []rune{'a', 'b'},
-			err: ErrLengthMismatch{3, 2},
+			err: LengthMismatchError{3, 2},
 		},
 		"index-mismatch": {
 			a:   []rune{'a', 'b', 'c'},
 			b:   []rune{'a', 'b', 'd'},
-			err: ErrIndexMismatch[rune]{2, 'c', 'd'},
+			err: IndexMismatchError[rune]{2, 'c', 'd'},
 		},
 		"empty": {
 			a:   []rune{},
@@ -132,12 +146,12 @@ func Test_Compare(t *testing.T) {
 		"length-mismatch": {
 			a:   []byte{'a', 'b', 'c'},
 			b:   []byte{'a', 'b'},
-			err: ErrLengthMismatch{3, 2},
+			err: LengthMismatchError{3, 2},
 		},
 		"index-mismatch": {
 			a:   []byte{'a', 'b', 'c'},
 			b:   []byte{'a', 'b', 'd'},
-			err: ErrIndexMismatch[byte]{2, 'c', 'd'},
+			err: IndexMismatchError[byte]{2, 'c', 'd'},
 		},
 		"empty": {
 			a:   []byte{},
@@ -165,12 +179,12 @@ func Test_Compare(t *testing.T) {
 		"length-mismatch": {
 			a:   []int{1, 2, 1},
 			b:   []int{1, 2},
-			err: ErrLengthMismatch{3, 2},
+			err: LengthMismatchError{3, 2},
 		},
 		"index-mismatch": {
 			a:   []int{1, 2, 1},
 			b:   []int{1, 2, 3},
-			err: ErrIndexMismatch[int]{2, 1, 3},
+			err: IndexMismatchError[int]{2, 1, 3},
 		},
 		"empty": {
 			a:   []int{},
@@ -198,12 +212,12 @@ func Test_Compare(t *testing.T) {
 		"length-mismatch": {
 			a:   []float32{1.0, 2.0, 1.0},
 			b:   []float32{1.0, 2.0},
-			err: ErrLengthMismatch{3, 2},
+			err: LengthMismatchError{3, 2},
 		},
 		"index-mismatch": {
 			a:   []float32{1.0, 2.0, 1.0},
 			b:   []float32{1.0, 2.0, 3.0},
-			err: ErrIndexMismatch[float32]{2, 1.0, 3.0},
+			err: IndexMismatchError[float32]{2, 1.0, 3.0},
 		},
 		"empty": {
 			a:   []float32{},
@@ -231,12 +245,12 @@ func Test_Compare(t *testing.T) {
 		"length-mismatch": {
 			a:   []complex64{1.0 + 2.0i, 2.0 + 3.0i, 1.0 + 2.0i},
 			b:   []complex64{1.0 + 2.0i, 2.0 + 3.0i},
-			err: ErrLengthMismatch{3, 2},
+			err: LengthMismatchError{3, 2},
 		},
 		"index-mismatch": {
 			a:   []complex64{1.0 + 2.0i, 2.0 + 3.0i, 1.0 + 2.0i},
 			b:   []complex64{1.0 + 2.0i, 2.0 + 3.0i, 3.0 + 4.0i},
-			err: ErrIndexMismatch[complex64]{2, 1.0 + 2.0i, 3.0 + 4.0i},
+			err: IndexMismatchError[complex64]{2, 1.0 + 2.0i, 3.0 + 4.0i},
 		},
 		"empty": {
 			a:   []complex64{},
@@ -264,12 +278,12 @@ func Test_Compare(t *testing.T) {
 		"length-mismatch": {
 			a:   []chan int{c1, c2, c3},
 			b:   []chan int{c1, c2},
-			err: ErrLengthMismatch{3, 2},
+			err: LengthMismatchError{3, 2},
 		},
 		"index-mismatch": {
 			a:   []chan int{c1, c2, c3},
 			b:   []chan int{c1, c2, c2},
-			err: ErrIndexMismatch[chan int]{2, c3, c2},
+			err: IndexMismatchError[chan int]{2, c3, c2},
 		},
 		"empty": {
 			a:   []chan int{},
@@ -322,7 +336,7 @@ func Test_Compare(t *testing.T) {
 				{A: 1, B: "a"},
 				{A: 2, B: "b"},
 			},
-			err: ErrLengthMismatch{3, 2},
+			err: LengthMismatchError{3, 2},
 		},
 		"index-mismatch": {
 			a: []testStruct{
@@ -335,7 +349,7 @@ func Test_Compare(t *testing.T) {
 				{A: 2, B: "b"},
 				{A: 4, B: "d"},
 			},
-			err: ErrIndexMismatch[testStruct]{
+			err: IndexMismatchError[testStruct]{
 				2,
 				testStruct{A: 3, B: "c"},
 				testStruct{A: 4, B: "d"},
@@ -367,12 +381,12 @@ func Test_Compare(t *testing.T) {
 		"length-mismatch": {
 			a:   []*testStruct{tp1, tp2, tp3},
 			b:   []*testStruct{tp1, tp2},
-			err: ErrLengthMismatch{3, 2},
+			err: LengthMismatchError{3, 2},
 		},
 		"index-mismatch": {
 			a:   []*testStruct{tp1, tp2, tp3},
 			b:   []*testStruct{tp1, tp2, tp2},
-			err: ErrIndexMismatch[*testStruct]{2, tp3, tp2},
+			err: IndexMismatchError[*testStruct]{2, tp3, tp2},
 		},
 		"empty": {
 			a:   []*testStruct{},

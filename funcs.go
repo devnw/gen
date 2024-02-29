@@ -1,3 +1,17 @@
+// Copyright 2022 Developer Network
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package gen
 
 // Unique returns a slice of unique values from the input slice
@@ -83,7 +97,7 @@ func Equal[T comparable](a, b []T) bool {
 // otherwise it returns an error indicating the issue
 func Compare[T comparable](a, b []T) error {
 	if len(a) != len(b) {
-		return ErrLengthMismatch{
+		return LengthMismatchError{
 			Expected: len(a),
 			Actual:   len(b),
 		}
@@ -98,7 +112,7 @@ func Compare[T comparable](a, b []T) error {
 		return nil
 	}
 
-	return ErrIndexMismatch[T]{i, a[i], b[i]}
+	return IndexMismatchError[T]{i, a[i], b[i]}
 }
 
 // Intersect returns the intersection between the two input slices
@@ -120,6 +134,7 @@ func Diff[T comparable](a, b []T) []T {
 	intersect := Intersect(a, b)
 
 	// Append `a` and `b`
+	//nolint:gocritic // this is on purpose
 	all := append(a, b...)
 
 	// Exclude intersection from `all`

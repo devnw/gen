@@ -1,3 +1,17 @@
+// Copyright 2022 Developer Network
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package gen
 
 import (
@@ -9,7 +23,6 @@ import (
 )
 
 func Benchmark_Unique(b *testing.B) {
-
 	data := []int{
 		1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10,
 	}
@@ -23,7 +36,6 @@ func Benchmark_Unique(b *testing.B) {
 }
 
 func Benchmark_Unique_NoUnique(b *testing.B) {
-
 	data := []int{
 		1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
 	}
@@ -37,7 +49,6 @@ func Benchmark_Unique_NoUnique(b *testing.B) {
 }
 
 func Benchmark_Has(b *testing.B) {
-
 	data := []int{
 		1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
 	}
@@ -50,7 +61,6 @@ func Benchmark_Has(b *testing.B) {
 }
 
 func Benchmark_Has_DoesntHave(b *testing.B) {
-
 	data := []int{
 		1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
 	}
@@ -63,7 +73,6 @@ func Benchmark_Has_DoesntHave(b *testing.B) {
 }
 
 func Benchmark_Match(b *testing.B) {
-
 	dataa := []int{
 		1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
 	}
@@ -80,7 +89,6 @@ func Benchmark_Match(b *testing.B) {
 }
 
 func Benchmark_Match_Doesnt(b *testing.B) {
-
 	dataa := []int{
 		1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
 	}
@@ -97,7 +105,6 @@ func Benchmark_Match_Doesnt(b *testing.B) {
 }
 
 func Benchmark_Indices(b *testing.B) {
-
 	data := []int{
 		1, 2, 2, 4, 5, 2, 7, 8, 2, 10,
 	}
@@ -111,7 +118,6 @@ func Benchmark_Indices(b *testing.B) {
 }
 
 func Benchmark_Indices_None(b *testing.B) {
-
 	data := []int{
 		1, 2, 2, 4, 5, 2, 7, 8, 2, 10,
 	}
@@ -125,7 +131,6 @@ func Benchmark_Indices_None(b *testing.B) {
 }
 
 func Benchmark_Index(b *testing.B) {
-
 	data := []int{
 		1, 2, 2, 4, 5, 2, 7, 8, 2, 10,
 	}
@@ -139,7 +144,6 @@ func Benchmark_Index(b *testing.B) {
 }
 
 func Benchmark_Index_None(b *testing.B) {
-
 	data := []int{
 		1, 2, 2, 4, 5, 2, 7, 8, 2, 10,
 	}
@@ -153,7 +157,6 @@ func Benchmark_Index_None(b *testing.B) {
 }
 
 func Benchmark_comp(b *testing.B) {
-
 	dataa := []int{
 		1, 2, 2, 4, 5, 2, 7, 8, 2, 10,
 	}
@@ -170,7 +173,6 @@ func Benchmark_comp(b *testing.B) {
 }
 
 func Benchmark_comp_nomatch(b *testing.B) {
-
 	dataa := []int{
 		1, 2, 2, 4, 5, 2, 7, 8, 2, 10,
 	}
@@ -187,7 +189,6 @@ func Benchmark_comp_nomatch(b *testing.B) {
 }
 
 func Benchmark_Equal(b *testing.B) {
-
 	dataa := []int{
 		1, 2, 2, 4, 5, 2, 7, 8, 2, 10,
 	}
@@ -204,7 +205,6 @@ func Benchmark_Equal(b *testing.B) {
 }
 
 func Benchmark_Equal_not(b *testing.B) {
-
 	dataa := []int{
 		1, 2, 2, 4, 5, 2, 7, 8, 2, 10,
 	}
@@ -221,7 +221,6 @@ func Benchmark_Equal_not(b *testing.B) {
 }
 
 func Benchmark_Compare(b *testing.B) {
-
 	dataa := []int{
 		1, 2, 2, 4, 5, 2, 7, 8, 2, 10,
 	}
@@ -239,7 +238,6 @@ func Benchmark_Compare(b *testing.B) {
 }
 
 func Benchmark_Compare_err(b *testing.B) {
-
 	dataa := []int{
 		1, 2, 2, 4, 5, 2, 7, 8, 2, 10,
 	}
@@ -257,7 +255,6 @@ func Benchmark_Compare_err(b *testing.B) {
 }
 
 func Benchmark_Intersect_full(b *testing.B) {
-
 	dataa := []int{
 		1, 2, 2, 4, 5, 2, 7, 8, 2, 10,
 	}
@@ -275,7 +272,6 @@ func Benchmark_Intersect_full(b *testing.B) {
 }
 
 func Benchmark_Intersect_partial(b *testing.B) {
-
 	dataa := []int{
 		1, 2, 2, 4, 5, 2, 7, 8, 2, 10,
 	}
@@ -293,7 +289,6 @@ func Benchmark_Intersect_partial(b *testing.B) {
 }
 
 func Benchmark_Intersect_none(b *testing.B) {
-
 	dataa := []int{
 		1, 2, 2, 4, 5, 2, 7, 8, 2, 10,
 	}
@@ -311,7 +306,6 @@ func Benchmark_Intersect_none(b *testing.B) {
 }
 
 func Benchmark_Diff_all(b *testing.B) {
-
 	dataa := []int{
 		1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
 	}
@@ -329,7 +323,6 @@ func Benchmark_Diff_all(b *testing.B) {
 }
 
 func Benchmark_Diff_partial(b *testing.B) {
-
 	dataa := []int{
 		1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
 	}
@@ -347,7 +340,6 @@ func Benchmark_Diff_partial(b *testing.B) {
 }
 
 func Benchmark_Diff_none(b *testing.B) {
-
 	dataa := []int{
 		1, 2, 2, 4, 5, 2, 7, 8, 2, 10,
 	}
@@ -365,7 +357,6 @@ func Benchmark_Diff_none(b *testing.B) {
 }
 
 func Benchmark_Exclude(b *testing.B) {
-
 	dataa := []int{
 		1, 2, 2, 4, 5, 2, 7, 8, 2, 10,
 	}
@@ -381,7 +372,6 @@ func Benchmark_Exclude(b *testing.B) {
 }
 
 func Benchmark_Exclude_none(b *testing.B) {
-
 	dataa := []int{
 		1, 2, 2, 4, 5, 2, 7, 8, 2, 10,
 	}

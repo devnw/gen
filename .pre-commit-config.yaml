@@ -1,33 +1,47 @@
+exclude: '^data/|.env'
+fail_fast: true
 repos:
--   repo: https://github.com/Contrast-Labs/detect-secrets
-    rev: v1.1.2
+  - repo: local
     hooks:
-    -   id: detect-secrets
+      - id: license-header
+        name: License Header
+        entry: ./scripts/license.py
+        language: system
+        always_run: true
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.4.0
+    hooks:
+      - id: detect-secrets
         name: Detect secrets
         language: python
         entry: detect-secrets-hook
-        args: ['--baseline', '.secrets.baseline']
--   repo: https://github.com/golangci/golangci-lint
-    rev: v1.50.0
+        args:
+          - '--baseline'
+          - '.secrets.baseline'
+  - repo: https://github.com/sqlfluff/sqlfluff
+    rev: 3.0.0a5
     hooks:
-    -   id: golangci-lint
--   repo: https://github.com/Bahjat/pre-commit-golang    
-    rev: v1.0.3 # pragma: allowlist secret
+      - id: sqlfluff-fix
+  - repo: https://github.com/syntaqx/git-hooks
+    rev: v0.0.18
     hooks:
-      - id: go-unit-tests
--   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.3.0
+      - id: forbid-binary
+      - id: shellcheck
+      - id: shfmt
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v3.14.1
     hooks:
-    -   id: check-json
-    -   id: check-added-large-files
-    -   id: pretty-format-json
-    -   id: check-merge-conflict
-    -   id: check-yaml
--   repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.32.2
+      - id: commitizen
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
     hooks:
-    -   id: markdownlint-fix
--   repo: https://github.com/koalaman/shellcheck-precommit
-    rev: v0.8.0
-    hooks:
-    -   id: shellcheck
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-yaml
+      - id: trailing-whitespace
+      - id: check-shebang-scripts-are-executable
+      - id: check-vcs-permalinks
+      - id: check-toml
+      - id: check-xml
+      - id: check-yaml
+      - id: end-of-file-fixer
