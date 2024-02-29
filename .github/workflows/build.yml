@@ -8,5 +8,5 @@ env:
 jobs:
   lint-build-test:
     name: Lint, Build & Test
-    uses: spyderorg/workflows/.github/workflows/make-build-nix.yml@main
+    uses: spyderorg/workflows/.github/workflows/make-build.yml@main
     secrets: inherit # pragma: allowlist secret
