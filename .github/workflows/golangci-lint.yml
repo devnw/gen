@@ -18,6 +18,6 @@ jobs:
           go-version: ${{ matrix.go-version }}
           stable: false
       - name: golangci-lint
-        uses: golangci/golangci-lint-action@v3
+        uses: golangci/golangci-lint-action@v4
         with:
           skip-go-installation: true
