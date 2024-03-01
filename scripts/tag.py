@@ -9,7 +9,11 @@ def run_command(command, capture_output=True, text=True):
     if result.returncode != 0:
         print(f"Command '{command}' failed with return code {result.returncode}")
         sys.exit(result.returncode)
-    return result.stdout.strip()
+    out = result.stdout
+    try:
+        return out.strip()
+    except AttributeError:
+        return out
 
 def main():
     # Fetch the latest tag
