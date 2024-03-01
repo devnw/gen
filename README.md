@@ -1,4 +1,4 @@
-# `gen` The Generic General Use Go Functions Library
+# `gen` - Generic Go Utility Library
 
 [![Build & Test Action Status](https://github.com/devnw/gen/actions/workflows/build.yml/badge.svg)](https://github.com/devnw/gen/actions)
 [![Go Report Card](https://goreportcard.com/badge/go.devnw.com/gen)](https://goreportcard.com/report/go.devnw.com/gen)
