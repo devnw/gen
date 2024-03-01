@@ -7,6 +7,11 @@ on:
 env:
   GH_ACCESS_TOKEN: ${{ secrets.GH_PAT }}
 
+permissions:
+  contents: write
+  packages: write
+  issues: write
+
 jobs:
   release:
     name: Tagged Release
