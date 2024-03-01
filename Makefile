@@ -89,9 +89,6 @@ build-ci: deps
 bench-ci: build-ci
 	go test -bench=. ./... | tee output.txt
 
-release-ci: build-ci
-	$(op) goreleaser release --clean
-
 test-ci:
 	DOCKER_HOST=$(shell docker context inspect --format='{{json .Endpoints.docker.Host}}' $(shell docker context show)) \
 				$(opact) act \
