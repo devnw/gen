@@ -28,6 +28,7 @@ type Args map[string]*Arg
 
 type Arg struct {
 	Value       any    `json:"value" yaml:"value"`
+	Short       string `json:"short" yaml:"short"`
 	Description string `json:"description" yaml:"description"`
 	Required    bool   `json:"required" yaml:"required"`
 	GetFN       func() any
@@ -74,52 +75,116 @@ func SetArgs(flags *pflag.FlagSet, prefix string, args Args) error {
 		arg := fmt.Sprintf("%s.%s", prefix, key)
 		switch v := val.Value.(type) {
 		case string:
-			flags.String(arg, v, val.String())
+			if val.Short != "" {
+				flags.StringP(arg, val.Short, v, val.String())
+			} else {
+				flags.String(arg, v, val.String())
+			}
 			val.GetFN = func() any { return viper.GetString(arg) }
 		case []string:
-			flags.StringSlice(arg, v, val.String())
+			if val.Short != "" {
+				flags.StringSliceP(arg, val.Short, v, val.String())
+			} else {
+				flags.StringSlice(arg, v, val.String())
+			}
 			val.GetFN = func() any { return viper.GetStringSlice(arg) }
 		case bool:
-			flags.Bool(arg, v, val.String())
+			if val.Short != "" {
+				flags.BoolP(arg, val.Short, v, val.String())
+			} else {
+				flags.Bool(arg, v, val.String())
+			}
 			val.GetFN = func() any { return viper.GetBool(arg) }
 		case int:
-			flags.Int(arg, v, val.String())
+			if val.Short != "" {
+				flags.IntP(arg, val.Short, v, val.String())
+			} else {
+				flags.Int(arg, v, val.String())
+			}
 			val.GetFN = func() any { return viper.GetInt(arg) }
 		case uint:
-			flags.Uint(arg, v, val.String())
+			if val.Short != "" {
+				flags.UintP(arg, val.Short, v, val.String())
+			} else {
+				flags.Uint(arg, v, val.String())
+			}
 			val.GetFN = func() any { return viper.GetUint(arg) }
 		case int8:
-			flags.Int8(arg, v, val.String())
+			if val.Short != "" {
+				flags.Int8P(arg, val.Short, v, val.String())
+			} else {
+				flags.Int8(arg, v, val.String())
+			}
 			val.GetFN = func() any { return viper.GetInt32(arg) }
 		case uint8:
-			flags.Uint8(arg, v, val.String())
+			if val.Short != "" {
+				flags.Uint8P(arg, val.Short, v, val.String())
+			} else {
+				flags.Uint8(arg, v, val.String())
+			}
 			val.GetFN = func() any { return viper.GetUint32(arg) }
 		case int16:
-			flags.Int16(arg, v, val.String())
+			if val.Short != "" {
+				flags.Int16P(arg, val.Short, v, val.String())
+			} else {
+				flags.Int16(arg, v, val.String())
+			}
 			val.GetFN = func() any { return viper.GetInt32(arg) }
 		case uint16:
-			flags.Uint16(arg, v, val.String())
+			if val.Short != "" {
+				flags.Uint16P(arg, val.Short, v, val.String())
+			} else {
+				flags.Uint16(arg, v, val.String())
+			}
 			val.GetFN = func() any { return viper.GetUint32(arg) }
 		case int32:
-			flags.Int32(arg, v, val.String())
+			if val.Short != "" {
+				flags.Int32P(arg, val.Short, v, val.String())
+			} else {
+				flags.Int32(arg, v, val.String())
+			}
 			val.GetFN = func() any { return viper.GetInt32(arg) }
 		case uint32:
-			flags.Uint32(arg, v, val.String())
+			if val.Short != "" {
+				flags.Uint32P(arg, val.Short, v, val.String())
+			} else {
+				flags.Uint32(arg, v, val.String())
+			}
 			val.GetFN = func() any { return viper.GetUint32(arg) }
 		case int64:
-			flags.Int64(arg, v, val.String())
+			if val.Short != "" {
+				flags.Int64P(arg, val.Short, v, val.String())
+			} else {
+				flags.Int64(arg, v, val.String())
+			}
 			val.GetFN = func() any { return viper.GetInt64(arg) }
 		case uint64:
-			flags.Uint64(arg, v, val.String())
+			if val.Short != "" {
+				flags.Uint64P(arg, val.Short, v, val.String())
+			} else {
+				flags.Uint64(arg, v, val.String())
+			}
 			val.GetFN = func() any { return viper.GetUint64(arg) }
 		case float32:
-			flags.Float32(arg, v, val.String())
+			if val.Short != "" {
+				flags.Float32P(arg, val.Short, v, val.String())
+			} else {
+				flags.Float32(arg, v, val.String())
+			}
 			val.GetFN = func() any { return viper.GetFloat64(arg) }
 		case float64:
-			flags.Float64(arg, v, val.String())
+			if val.Short != "" {
+				flags.Float64P(arg, val.Short, v, val.String())
+			} else {
+				flags.Float64(arg, v, val.String())
+			}
 			val.GetFN = func() any { return viper.GetFloat64(arg) }
 		case time.Duration:
-			flags.Duration(arg, v, val.String())
+			if val.Short != "" {
+				flags.DurationP(arg, val.Short, v, val.String())
+			} else {
+				flags.Duration(arg, v, val.String())
+			}
 			val.GetFN = func() any { return viper.GetDuration(arg) }
 		default:
 			slog.Error(
