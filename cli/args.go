@@ -29,6 +29,8 @@ type Args map[string]*Arg
 type Arg struct {
 	Value       any    `json:"value" yaml:"value"`
 	Short       string `json:"short" yaml:"short"`
+	Deprecated  bool   `json:"deprecated" yaml:"deprecated"`
+	Replacement string `json:"replacement" yaml:"replacement"`
 	Description string `json:"description" yaml:"description"`
 	Required    bool   `json:"required" yaml:"required"`
 	GetFN       func() any
@@ -72,7 +74,17 @@ var ErrUnknownType = fmt.Errorf("unknown type")
 //nolint:funlen // this is a necessary evil
 func SetArgs(flags *pflag.FlagSet, prefix string, args Args) error {
 	for key, val := range args {
-		arg := fmt.Sprintf("%s.%s", prefix, key)
+		arg := key
+		if prefix != "" {
+			arg = fmt.Sprintf("%s.%s", prefix, key)
+		}
+
+		if val.Deprecated {
+			flags.MarkDeprecated(arg, fmt.Sprintf(
+				"--%s is deprecated in favor of --%s", arg, val.Replacement,
+			))
+		}
+
 		switch v := val.Value.(type) {
 		case string:
 			if val.Short != "" {
