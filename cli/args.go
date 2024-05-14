@@ -27,6 +27,7 @@ import (
 type Args map[string]*Arg
 
 type Arg struct {
+	Short       string `json:"shorthand" yaml:"shorthand"` // one-letter abbreviated flag
 	Value       any    `json:"value" yaml:"value"`
 	Short       string `json:"short" yaml:"short"`
 	Deprecated  bool   `json:"deprecated" yaml:"deprecated"`
@@ -71,7 +72,7 @@ func (a *Arg) String() string {
 
 var ErrUnknownType = fmt.Errorf("unknown type")
 
-//nolint:funlen // this is a necessary evil
+//nolint:funlen,gocognit,gocyclo,cyclop // this is a necessary evil
 func SetArgs(flags *pflag.FlagSet, prefix string, args Args) error {
 	for key, val := range args {
 		arg := key
