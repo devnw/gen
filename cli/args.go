@@ -29,7 +29,6 @@ type Args map[string]*Arg
 type Arg struct {
 	Short       string `json:"short" yaml:"short"` // one-letter abbreviated flag
 	Value       any    `json:"value" yaml:"value"`
-	Short       string `json:"short" yaml:"short"`
 	Deprecated  bool   `json:"deprecated" yaml:"deprecated"`
 	Replacement string `json:"replacement" yaml:"replacement"`
 	Description string `json:"description" yaml:"description"`
