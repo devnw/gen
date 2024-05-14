@@ -27,7 +27,7 @@ import (
 type Args map[string]*Arg
 
 type Arg struct {
-	Short       string `json:"shorthand" yaml:"shorthand"` // one-letter abbreviated flag
+	Short       string `json:"short" yaml:"short"` // one-letter abbreviated flag
 	Value       any    `json:"value" yaml:"value"`
 	Short       string `json:"short" yaml:"short"`
 	Deprecated  bool   `json:"deprecated" yaml:"deprecated"`
