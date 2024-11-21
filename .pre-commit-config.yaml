@@ -1,47 +1,46 @@
-exclude: '^data/|.env'
-fail_fast: true
+exclude: '^$'
+fail_fast: true 
 repos:
-  - repo: local
+  -   repo: https://github.com/Yelp/detect-secrets
+      rev: v1.5.0
+      hooks:
+      -   id: detect-secrets
+          name: Detect secrets
+          language: python
+          entry: detect-secrets-hook
+          args: [
+            '--baseline', 
+            '.secrets.baseline',
+            '--exclude-files',
+            '(_test\.go$|/testdata/|gomod2nix.toml)',
+            ]
+  - repo: https://github.com/mrtazz/checkmake.git
+    rev: 0.2.2
     hooks:
-      - id: license-header
-        name: License Header
-        entry: ./scripts/license.py
-        language: system
-        always_run: true
-  - repo: https://github.com/Yelp/detect-secrets
-    rev: v1.4.0
+    -   id: checkmake
+  -   repo: https://github.com/pre-commit/pre-commit-hooks
+      rev: v5.0.0
+      hooks:
+      -   id: check-json
+      -   id: check-merge-conflict
+      -   id: check-yaml
+      -   id: end-of-file-fixer
+      -   id: check-symlinks
+  - repo: https://github.com/markdownlint/markdownlint
+    rev: v0.12.0
     hooks:
-      - id: detect-secrets
-        name: Detect secrets
-        language: python
-        entry: detect-secrets-hook
-        args:
-          - '--baseline'
-          - '.secrets.baseline'
-  - repo: https://github.com/sqlfluff/sqlfluff
-    rev: 3.0.0a6
-    hooks:
-      - id: sqlfluff-fix
-  - repo: https://github.com/syntaqx/git-hooks
-    rev: v0.0.18
-    hooks:
-      - id: forbid-binary
-      - id: shellcheck
-      - id: shfmt
+    -   id: markdownlint
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v3.17.0
+    rev: v3.31.0
     hooks:
       - id: commitizen
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+      - id: commitizen-branch
+        stages: [push]
+  - repo: local
     hooks:
-      - id: check-json
-      - id: check-merge-conflict
-      - id: check-yaml
-      - id: trailing-whitespace
-      - id: check-shebang-scripts-are-executable
-      - id: check-vcs-permalinks
-      - id: check-toml
-      - id: check-xml
-      - id: check-yaml
-      - id: end-of-file-fixer
+      - id: makefile
+        name: Run Makefile Lint
+        entry: make
+        args: [pre-commit]
+        language: system
+        pass_filenames: false
