@@ -3,7 +3,7 @@ module go.devnw.com/gen
 go 1.19
 
 require (
-	github.com/spf13/pflag v1.0.5
+	github.com/spf13/pflag v1.0.6
 	github.com/spf13/viper v1.19.0
 )
 
